@@ -33,13 +33,21 @@
 (defconst glsl-font-lock-keywords-2
   (append glsl-font-lock-keywords-1
           (list
+           '("^[a-zA-Z_][a-zA-Z_0-9]*[[:space:]\n]+\\([a-zA-Z_][a-zA-Z_0-9]*\\)(" 1 font-lock-preprocessor-face)
            ;; True/false constants
            '("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
            ;; Integer/Float constants
            '("\\<[+-]?[0-9]+\\(\.[0-9]+\\)?\\([eE][0-9]+\\)?\\>" . font-lock-constant-face)))
-  "Maximum highlighting expressions for GLSL mode")
+  "Medium highlighting expressions for GLSL mode")
 
-(defvar glsl-font-lock-keywords glsl-font-lock-keywords-2
+(defconst glsl-font-lock-keywords-3
+  (append glsl-font-lock-keywords-2
+          (list
+           ;; Builtin gl_* variables
+           '("\\<\\(gl_\\(?:ClipDistance\\|DepthRange\\|Fr\\(?:ag\\(?:Coord\\|Depth\\)\\|ontFacing\\)\\|GlobalInvocationID\\|In\\(?:\\(?:stance\\|vocation\\)ID\\)\\|L\\(?:ayer\\|ocalInvocationI\\(?:D\\|ndex\\)\\)\\|M\\(?:ax\\(?:AtomicCounterB\\(?:indings\\|ufferSize\\)\\|C\\(?:lipDistances\\|om\\(?:bined\\(?:\\(?:AtomicCounter\\(?:Buffer\\)?\\|ImageUni\\(?:form\\|tsAndFragmentOutput\\)\\|TextureImageUnit\\)s\\)\\|pute\\(?:AtomicCounter\\(?:\\(?:Buffer\\)?s\\)\\|ImageUniforms\\|TextureImageUnits\\|UniformComponents\\|WorkGroup\\(?:Count\\|Size\\)\\)\\)\\)\\|DrawBuffers\\|Fragment\\(?:\\(?:AtomicCounter\\(?:Buffer\\)?\\|I\\(?:mageUniform\\|nputComponent\\)\\|Uniform\\(?:Component\\|Vector\\)\\)s\\)\\|Geometry\\(?:\\(?:AtomicCounter\\(?:Buffer\\)?\\|I\\(?:mageUniform\\|nputComponent\\)\\|Output\\(?:Component\\|Vertice\\)\\|\\(?:T\\(?:extureImageUni\\|otalOutputComponen\\)\\|\\(?:Uniform\\|Varying\\)Componen\\)t\\)s\\)\\|Image\\(?:\\(?:Sample\\|Unit\\)s\\)\\|P\\(?:atchVertices\\|rogramTexelOffset\\)\\|T\\(?:e\\(?:ss\\(?:Control\\(?:\\(?:AtomicCounter\\(?:Buffer\\)?\\|I\\(?:mageUniform\\|nputComponent\\)\\|\\(?:OutputComponen\\|T\\(?:extureImageUni\\|otalOutputComponen\\)\\|UniformComponen\\)t\\)s\\)\\|Evaluation\\(?:\\(?:AtomicCounter\\(?:Buffer\\)?\\|I\\(?:mageUniform\\|nputComponent\\)\\|\\(?:OutputComponen\\|TextureImageUni\\|UniformComponen\\)t\\)s\\)\\|GenLevel\\|Patch\\(?:\\(?:Component\\|Vertice\\)s\\)\\)\\|xtureImageUnits\\)\\|ransformFeedback\\(?:\\(?:Buffer\\|InterleavedComponent\\)s\\)\\)\\|V\\(?:\\(?:aryingVector\\|ertex\\(?:At\\(?:omicCounter\\(?:Buffer\\)?\\|trib\\)\\|ImageUniform\\|OutputComponent\\|TextureImageUnit\\|Uniform\\(?:Component\\|Vector\\)\\)\\|iewport\\)s\\)\\)\\|inProgramTexelOffset\\)\\|NumWorkGroups\\|P\\(?:atchVerticesIn\\|erVertex\\|o\\(?:int\\(?:Coord\\|Size\\)\\|sition\\)\\|rimitiveID\\(?:In\\)?\\)\\|Sample\\(?:ID\\|Mask\\(?:In\\)?\\|Position\\)\\|Tess\\(?:Coord\\|Level\\(?:\\(?:Inn\\|Out\\)er\\)\\)\\|V\\(?:ertexID\\|iewportIndex\\)\\|WorkGroup\\(?:Id\\|Size\\)\\)\\)\\>" . font-lock-builtin-face)))
+  "Highest GLSL highlighting expressions")
+
+(defvar glsl-font-lock-keywords glsl-font-lock-keywords-3
   "Default highlighting expressions for GLSL mode")
 
 (defvar glsl-mode-syntax-table
